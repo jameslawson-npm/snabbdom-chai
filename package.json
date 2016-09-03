@@ -1,0 +1,38 @@
+{
+  "name": "snabbdom-chai",
+  "version": "1.0.0",
+  "author": "James Lawson",
+  "description": "Flexible chai matchers for snabbdom",
+  "main": "index.js",
+  "keywords": [
+    "snabbdom",
+    "chai"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameslawson/snabbdom-chai.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jameslawson/snabbdom-chai/issues"
+  },
+  "homepage": "https://github.com/jameslawson/snabbdom-chai#readme",
+  "scripts": {
+    "test": "mocha test 'test/**/*.spec.js'"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "lodash": "^4.15.0",
+    "mocha": "^3.0.2",
+    "snabbdom": "^0.5.2"
+  },
+  "dependencies": {
+    "lodash.every": "^4.6.0",
+    "lodash.includes": "^4.3.0",
+    "lodash.keys": "^4.2.0",
+    "lodash.reduce": "^4.6.0"
+  }
+}
