@@ -34,5 +34,20 @@ describe('basics', function() {
     expect(tree).to.have.style({ color: 'green' });
   });
 
+  it('should assert a tree\'s children count', function() {
+    var tree = h('div', [ h('span'), h('span'), h('span') ]);
+    expect(tree).to.have.children(3);
+  });
+
+  it('should assert a tree\'s text', function() {
+    var tree = h('div', 'hello');
+    expect(tree).to.have.text('hello');
+  });
+
+  it('should assert a tree\'s attribute', function() {
+    var tree = h('div', { attrs: { src: 'http://foo.com/image.png' } });
+    expect(tree).to.have.attribute('src', 'http://foo.com/image.png');
+  });
+
 });
 
