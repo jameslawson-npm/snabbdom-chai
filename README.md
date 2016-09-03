@@ -4,6 +4,8 @@
 
 A [chai](http://chaijs.com/) plugin for [snabbdom](https://github.com/paldepind/snabbdom).
 
+## Usage
+
 Basics:
 ```javascript
 expect(tree).to.have.tag('div');
