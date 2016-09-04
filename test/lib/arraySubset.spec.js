@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-var subset = require('../../lib/subset');
+var subset = require('../../lib/arraySubset');
 
 describe('subset', function() {
 

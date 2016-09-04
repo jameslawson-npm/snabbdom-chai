@@ -1,4 +1,4 @@
-var subset = require('../lib/subset');
+var subset = require('../lib/arraySubset');
 
 function builder(chai, utils) {
   function classes(names) {

@@ -1,4 +1,4 @@
-var objSubset = require('../lib/objSubset');
+var subset = require('../lib/objectSubset');
 var styleParse = require('../lib/styleParse');
 
 function builder(chai, utils) {
@@ -6,7 +6,7 @@ function builder(chai, utils) {
     var tree = this._obj;
     var rootStyleAttr = (tree.data && tree.data.style) || {};
     var rootStyle = styleParse(rootStyleAttr);
-    var passes = objSubset(style, rootStyle);
+    var passes = subset(style, rootStyle);
 
     var ERR_MSG = 'expected #{this} to have matching styles';
     var NOT_MSG = 'expected #{this} to not have matching styles';
