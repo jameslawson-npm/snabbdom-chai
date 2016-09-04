@@ -1,19 +1,11 @@
 var subset = require('../lib/arraySubset');
+var parseClassNames = require('../lib/selectorParse').parseClassNames;
 
 function builder(chai, utils) {
   function classes(names) {
     var tree = this._obj;
     var sel = tree.sel;
-
-    var hashLookup = sel.indexOf('#');
-    var firstDotIndex = sel.indexOf('.', hashLookup);
-
-    // store in `classNames` the class names in the form of: 'c1.c2.c3'
-    // where each class name, ci, is seperated by a dot in the string
-    // then use `split` to get an array: ['c1', 'c2', 'c3']
-    var classNamesFrom  = (firstDotIndex > 0) ? firstDotIndex+1 : sel.length;
-    var classNamesTo = sel.length;
-    var classNames = sel.slice(classNamesFrom, classNamesTo).split('.');
+    var classNames = parseClassNames(sel);
 
     var passes = subset(names, classNames);
     var ERR_MSG = 'expected #{this} to have classes #{exp}';
