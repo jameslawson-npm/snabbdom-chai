@@ -4,6 +4,10 @@ var styleParse = require('../../lib/styleParse');
 
 describe('parsing style attributes', function() {
 
+  it('should parse undefined as an empty object', function() {
+    expect(styleParse(undefined)).to.be.deep.equal({});
+  });
+
   it('should parse "" as an empty object', function() {
     expect(styleParse('')).to.be.deep.equal({});
   });

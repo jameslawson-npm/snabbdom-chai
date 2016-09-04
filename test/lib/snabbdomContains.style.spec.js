@@ -8,12 +8,12 @@ describe('snabbdom contains - by styles', function() {
   it('should check if a tree with three children contains a subtree by styles', function() {
     var tree = h('div', [
         h('span', 'foo1'),
-        h('span', { attributes: { style: 'top: 10px; bottom: 5px; background: red' } }),
+        h('span', { style: 'top: 10px; bottom: 5px; background: red' }),
         h('span', 'foo2')
     ]);
 
     expect(contains(tree, {
-      styles: {
+      style: {
         background: 'red',
         bottom: '5px',
         top: '10px'
