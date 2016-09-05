@@ -1,5 +1,5 @@
 var includes = require('lodash.includes');
-var parseClassNames = require('../lib/selectorParse').parseClassNames;
+var parseClassNames = require('../../lib/selectorParse').parseClassNames;
 
 function builder(chai, utils) {
   function klass(name) {

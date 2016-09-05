@@ -1,4 +1,4 @@
-var parseTag = require('../lib/selectorParse').parseTag;
+var parseTag = require('../../lib/selectorParse').parseTag;
 
 function builder(chai, utils) {
   function tag(tag) {

@@ -1,5 +1,5 @@
-var subset = require('../lib/arraySubset');
-var parseClassNames = require('../lib/selectorParse').parseClassNames;
+var subset = require('../../lib/arraySubset');
+var parseClassNames = require('../../lib/selectorParse').parseClassNames;
 
 function builder(chai, utils) {
   function classes(names) {

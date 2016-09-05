@@ -1,7 +1,7 @@
 var SUBTREE_FLAG = require('./flags').SUBTREE;
 
-function builder(chai, utils) {
-  function withSubtree(matcher, flag) {
+function withSubtree(matcher, flag) {
+  function builder(chai, utils) {
     return function() {
       if (utils.flag(this, SUBTREE_FLAG)) {
         var value = arguments[0];
@@ -11,7 +11,7 @@ function builder(chai, utils) {
       }
     }
   }
-  return withSubtree;
+  return builder;
 }
 
-module.exports = builder;
+module.exports = withSubtree;

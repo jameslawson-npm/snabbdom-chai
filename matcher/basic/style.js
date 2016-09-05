@@ -1,5 +1,5 @@
-var subset = require('../lib/objectSubset');
-var styleParse = require('../lib/styleParse');
+var subset = require('../../lib/objectSubset');
+var styleParse = require('../../lib/styleParse');
 
 function builder(chai, utils) {
   function style(style) {
