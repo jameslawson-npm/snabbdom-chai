@@ -21,10 +21,9 @@ function plugin(chai, utils) {
   // subtree expectations
   chai.Assertion.addProperty('subtree', require('./matcher/subtree/subtree')(chai, utils));
   chai.Assertion.addProperty('inside', require('./matcher/subtree/inside')(chai, utils));
-  chai.Assertion.addProperty('subtree', require('./matcher/subtree/subtree')(chai, utils));
 
   // locating
-  // chai.Assertion.addProperty('root', require('./matcher/root/root')(chai, utils));
+  chai.Assertion.addMethod('root', require('./matcher/root/root')(chai, utils));
 }
 
 module.exports = plugin;
