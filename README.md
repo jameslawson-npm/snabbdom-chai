@@ -38,6 +38,12 @@ expect(tree).to.have.a.subtree.with.tag('div').with.class('foo').inside;
 expect(tree).to.have.a.subtree.with.tag('h1').class('bar').style({ color: 'red' }).and.text('world').inside;
 ```
 
+Locating:
+```javascript
+expect(tree).at.root('some-class').to.have.tag('div');
+expect(tree).at.root('some-class').to.have.a.subtree.with.tag('h1').inside;
+```
+
 ## Installation
 
 ```
