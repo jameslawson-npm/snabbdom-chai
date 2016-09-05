@@ -1,61 +1,26 @@
-var foreach = require('lodash.foreach');
-var contains = require('./lib/snabbdomContains');
+var forown = require('lodash.forown');
+var SUBTREE_FLAGS = require('./matcher/subtree/flags');
 
 function plugin(chai, utils) {
+  var withSubtree = require('./matcher/subtree/withSubtree')(chai, utils);
 
-  // decorate a matcher with the ability
-  // to be used in a subtree expectation
-  var SUBTREE_FLAG = 'subtree';
-  function withSubtree(flag, matcher) {
-    return function() {
-      if (utils.flag(this, SUBTREE_FLAG)) {
-        var value = arguments[0];
-        utils.flag(this, flag, value);
-      } else {
-        matcher(chai, utils).apply(this, arguments);
-      }
-    }
+  var matchers = {
+    attribute: require('./matcher/attribute')(chai, utils),
+    children: withSubtree(require('./matcher/children'), SUBTREE_FLAGS.CHILDREN),
+    class: withSubtree(require('./matcher/class'), SUBTREE_FLAGS.CLASS),
+    classes: withSubtree(require('./matcher/classes'), SUBTREE_FLAGS.CLASSES),
+    style: withSubtree(require('./matcher/style'), SUBTREE_FLAGS.STYLE),
+    tag: withSubtree(require('./matcher/tag'), SUBTREE_FLAGS.TAG),
+    text: withSubtree(require('./matcher/text'), SUBTREE_FLAGS.TEXT),
   }
-  chai.Assertion.addProperty('subtree', function() {
-    utils.flag(this, SUBTREE_FLAG, true);
+
+  forown(matchers, function(matcher, name) {
+    chai.Assertion.addMethod(name, matcher);
   });
 
-  chai.Assertion.addProperty('inside', function() {
-    var tree = this._obj;
-    var children = utils.flag(this, 'subtree.children');
-    var klass    = utils.flag(this, 'subtree.class');
-    var classes  = utils.flag(this, 'subtree.classes');
-    var tag      = utils.flag(this, 'subtree.tag');
-    var text     = utils.flag(this, 'subtree.text');
-    var style    = utils.flag(this, 'subtree.style');
-
-    var classNames = (klass) ? [klass] : classes;
-    var found = contains(tree, {
-      children: children,
-      classNames: classNames,
-      style: style,
-      tag: tag,
-      text: text
-    });
-    var ERR_MSG = 'expected #{this} to have a matching subtree';
-    var NOT_MSG = 'expected #{this} to not have a matching subtree';
-    this.assert(found, ERR_MSG, NOT_MSG);
-  });
-
-  foreach([
-    'attribute',
-    'children',
-    'class',
-    'classes',
-    'style',
-    'tag',
-    'text',
-  ], function(name) {
-    var matcher = require('./matcher/' + name);
-    var flag = 'subtree.' + name;
-    chai.Assertion.addMethod(name, withSubtree(flag, matcher));
-  });
-
+  chai.Assertion.addProperty('subtree', require('./matcher/subtree/subtree')(chai, utils));
+  chai.Assertion.addProperty('inside', require('./matcher/subtree/inside')(chai, utils));
+  chai.Assertion.addProperty('subtree', require('./matcher/subtree/subtree')(chai, utils));
 }
 
 module.exports = plugin;
