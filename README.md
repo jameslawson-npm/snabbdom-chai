@@ -56,12 +56,12 @@ expect(tree).to.have.styles.that.have.all.keys('left', 'display', 'background');
 ## Installation
 
 ```
-npm install snabbbdom-chai --save-dev
+npm install snabbdom-chai --save-dev
 ```
 
 ```javascript
 var chai = require('chai');
-chai.use(require('snabbbdom-chai'));
+chai.use(require('snabbdom-chai'));
 ```
 
 ## License
