@@ -44,6 +44,15 @@ expect(tree).at.root('some-class').to.have.tag('div');
 expect(tree).at.root('some-class').to.have.a.subtree.with.tag('h1').inside;
 ```
 
+Delegating to core chai:
+```javascript
+expect(tree).to.have.children.below(3);
+expect(tree).to.have.classes.that.include.members(['hide', 'clearfix']);
+expect(tree).to.have.text.that.has.length.within(2,4);
+expect(tree).to.have.styles.that.have.all.keys('left', 'display', 'background');
+```
+
+
 ## Installation
 
 ```
