@@ -1,6 +1,6 @@
 {
   "name": "snabbdom-chai",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "James Lawson",
   "description": "Flexible chai matchers for snabbdom",
   "main": "index.js",
