@@ -1,3 +1,6 @@
+var get = require('lodash.get');
+var merge = require('lodash.merge');
+
 var styleParse = require('../../lib/styleParse');
 
 function builder(chai, utils) {
@@ -6,8 +9,13 @@ function builder(chai, utils) {
     var tree = this._obj;
     var sel = tree.sel;
 
-    var rootStyleAttr = (tree.data && tree.data.style) || '';
-    var rootStyle = styleParse(rootStyleAttr);
+    var rootStyleData = get(tree.data, 'style', '');
+    var rootStyleAttr = get(tree.data, 'attrs.style', '');
+
+    var dataStyle = styleParse(rootStyleData);
+    var attrStyle = styleParse(rootStyleAttr);
+    var rootStyle = merge(dataStyle, attrStyle);
+
     utils.flag(this, 'object', rootStyle);
   }
   return style;

@@ -34,6 +34,12 @@ describe('basics', function() {
     expect(tree).to.have.style({ color: 'green' });
   });
 
+  it('should assert a tree\'s style attribute', function() {
+    var tree = h('div', { attrs: { style: 'background: red; color: green;' } }, 'foo');
+    expect(tree).to.have.style({ background: 'red' });
+    expect(tree).to.have.style({ color: 'green' });
+  });
+
   it('should assert a tree\'s children count', function() {
     var tree = h('div', [ h('span'), h('span'), h('span') ]);
     expect(tree).to.have.children(3);

@@ -35,6 +35,14 @@ describe('delegating', function() {
     });
   });
 
+  it('should expose tree\'s style attribute for delegation', function() {
+    var tree = h('div.x.y.z', { attrs: { style: 'left: 10px; top: 5px' } });
+    expect(tree).to.have.style.that.is.deep.equal({
+      left: '10px',
+      top: '5px'
+    });
+  });
+
   it('should expose tree\'s text for delegation', function() {
     var tree = h('div.foo', 'x');
     expect(tree).to.have.text.that.is.equal('x');

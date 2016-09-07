@@ -40,7 +40,7 @@ describe('subtree', function() {
     expect(tree).not.to.have.a.subtree.with.tag('div').children(1).inside;
   });
 
-  it('should find a subtree by tag and styles', function() {
+  it('should find a subtree by style', function() {
     var tree = h('div', [ h('a', { style: 'width: 20px; top: 0px; left: 10px' }) ]);
     expect(tree).to.have.a.subtree.with.style({ left: '10px' }).inside;
     expect(tree).to.have.a.subtree.with.style({ left: '10px', top: '0px' }).inside;
@@ -48,6 +48,13 @@ describe('subtree', function() {
 
     expect(tree).not.to.have.a.subtree.with.style({ right: '50px' }).inside;
     expect(tree).not.to.have.a.subtree.with.style({ right: '50px', left: '10px', top: '0px', width: '20px' }).inside;
+  });
+
+  it('should find a subtree by style attribute', function() {
+    var tree = h('div', [ h('a', { attrs: { style: 'width: 20px; top: 0px; left: 10px' } }) ]);
+    expect(tree).to.have.a.subtree.with.style({ left: '10px' }).inside;
+    expect(tree).to.have.a.subtree.with.style({ left: '10px', top: '0px' }).inside;
+    expect(tree).to.have.a.subtree.with.style({ left: '10px', top: '0px', width: '20px' }).inside;
   });
 
   it('should find a subtree by tag and class and styles and children', function() {
